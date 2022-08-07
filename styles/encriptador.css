@@ -42,6 +42,11 @@ textarea {
     width: 100%;
 }
 
+.borde-rojo {
+    border: 2px solid rgba(236, 27, 27, 0.671);
+    box-shadow: 2px 3px 20px rgb(236, 27, 27) ;
+}
+
 textarea:focus {
     outline: none;
 }
@@ -168,7 +173,6 @@ button {
     display: none;
 }
 
-
 /* div que muestro cuando encripté mensaje */
 .encripted-message {
     width: 100%;
@@ -206,7 +210,7 @@ button {
 }
 
 .copiar-texto {
-    
+
 }
 
 footer {
@@ -262,7 +266,7 @@ footer {
     .botonera {
         width: 100%;
     }
-    
+
     .texto-encriptado {
         text-align: left;
         width: 100%;
@@ -295,14 +299,14 @@ footer {
         padding: 0;
         margin: 0;
     }
-    
+
     .nomessage p {
         /* padding: 8px; */
         /* padding-top: 4px; */
         /* margin: 5px; */
         font-size: 15px;
     }
-    
+
 }
 
 @media only screen and (max-width: 460px) {

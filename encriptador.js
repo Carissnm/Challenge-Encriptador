@@ -7,52 +7,64 @@ const btnBorrar = document.querySelector('.borrar-texto')
 
 texto.focus();
 
+console.log(texto.value)
+
 
 // FUNCIONES
 function encriptarMensaje() {
-    if(texto.value === '') {
+    if(/[A-ZÀ-ú]/.test(texto.value)) {
+        texto.classList = 'borde-rojo';
         display.innerHTML = `<div class="nomessage">
-        <img class="img-nomessage" src="./multimedia/cyber-security-g0ff8d1ba3_1280.png" alt="candado cerrado mensaje no encontrado">
-        <h2 class="error">No se encontró ningún mensaje</h2>
-        <p>Ingresá el texto que deseás encriptar.</p>
-    </div>`
+        <img class="img-nomessage" src="./multimedia/warning-icon-png-2775.png" alt="candado cerrado no ingrese mayusculas ni minusculas">
+        <h2 class="error">Error</h2>
+        <p>Ingresa sólo texto en minúsculas y sin acentos por favor.</p>`
         limpiarMensajeError()
     } else {
-        const textoIngresado = texto.value.split('').map(item => {
-            switch(item) {
-                case 'a' :
-                    return 'ai';
-                    break;
-                case 'e' :
-                    return 'enter';
-                    break;
-                case 'i' :
-                    return 'imes';
-                    break;
-                case 'o' :
-                    return 'ober';
-                    break;
-                case 'u' :
-                    return 'ufat';
-                    break;
-                default :
-                    return item;
-                    break
-            }
-        })
-        const textoEncriptado = textoIngresado.join('')
-        display.innerHTML = `
-                    <div class="encripted-message">
-                        <p class="texto-encriptado">${textoEncriptado}</p>
-                    </div>`
-        const parrafo = document.querySelector('.texto-encriptado');
-            texto.focus();
-            texto.value = '';
-    }    
+        if(texto.value === '') {
+            display.innerHTML = `<div class="nomessage">
+            <img class="img-nomessage" src="./multimedia/cyber-security-g0ff8d1ba3_1280.png" alt="candado cerrado mensaje no encontrado">
+            <h2 class="error">No se encontró ningún mensaje</h2>
+            <p>Ingresá el texto que deseás encriptar.</p>
+        </div>`
+            limpiarMensajeError()
+        } else {
+            const textoIngresado = texto.value.split('').map(item => {
+                switch(item) {
+                    case 'a' :
+                        return 'ai';
+                        break;
+                    case 'e' :
+                        return 'enter';
+                        break;
+                    case 'i' :
+                        return 'imes';
+                        break;
+                    case 'o' :
+                        return 'ober';
+                        break;
+                    case 'u' :
+                        return 'ufat';
+                        break;
+                    default :
+                        return item;
+                        break
+                }
+            })
+            const textoEncriptado = textoIngresado.join('')
+            display.innerHTML = `
+                        <div class="encripted-message">
+                            <p class="texto-encriptado">${textoEncriptado}</p>
+                        </div>`
+            const parrafo = document.querySelector('.texto-encriptado');
+                texto.focus();
+                texto.value = '';
+        }    
+    }
+    
 }
 
 function limpiarMensajeError() {
-    setTimeout( limpiarDisplay , 3000 )
+    setTimeout( limpiarDisplay , 3500 )
 }
 
 function copiarMensaje() {
@@ -73,31 +85,43 @@ function copiarMensaje() {
 
 function limpiarDisplay() {
     display.innerHTML = '';
+    if(texto.classList.contains('borde-rojo')) {
+        texto.classList.remove('borde-rojo');
+    }
 }
 
 function descifrarEncriptado() {
-    let encriptado = texto.value;
-    if(encriptado == '') {
+    if(/[A-ZÀ-ú]/.test(texto.value)) {
+        texto.classList = 'borde-rojo';
         display.innerHTML = `<div class="nomessage">
-        <img class="img-nomessage" src="./multimedia/cyber-security-g0ff8d1ba3_1280.png" alt="candado cerrado mensaje no encontrado">
-        <h2 class="error">No se encontró ningún mensaje</h2>
-        <p>Ingresá el texto que deseás desencriptar.</p>
-        </div>`
-        limpiarMensajeError();
+        <img class="img-nomessage" src="./multimedia/warning-icon-png-2775.png" alt="candado cerrado no ingrese mayusculas ni minusculas">
+        <h2 class="error">Error</h2>
+        <p>Ingresa sólo texto en minúsculas y sin acentos por favor.</p>`
+        limpiarMensajeError()
     } else {
-        let desencriptadoA = encriptado.replace(/ai/g, 'a');
-        let desencriptadoE = desencriptadoA.replace(/enter/g, 'e');
-        let desencriptadoI = desencriptadoE.replace(/imes/g, 'i');
-        let desencriptadoO = desencriptadoI.replace(/ober/g, 'o');
-        let desencriptadoU = desencriptadoO.replace(/ufat/g, 'u');
-        display.innerHTML = `
-                        <div class="encripted-message">
-                            <p class="texto-encriptado">${desencriptadoU}</p>
-                        </div>`
-        texto.focus();
-        texto.value = '';
+            let encriptado = texto.value;
+        if(encriptado == '') {
+            display.innerHTML = `<div class="nomessage">
+            <img class="img-nomessage" src="./multimedia/cyber-security-g0ff8d1ba3_1280.png" alt="candado cerrado mensaje no encontrado">
+            <h2 class="error">No se encontró ningún mensaje</h2>
+            <p>Ingresá el texto que deseás desencriptar.</p>
+            </div>`
+            limpiarMensajeError();
+        } else {
+            let desencriptadoA = encriptado.replace(/ai/g, 'a');
+            let desencriptadoE = desencriptadoA.replace(/enter/g, 'e');
+            let desencriptadoI = desencriptadoE.replace(/imes/g, 'i');
+            let desencriptadoO = desencriptadoI.replace(/ober/g, 'o');
+            let desencriptadoU = desencriptadoO.replace(/ufat/g, 'u');
+            display.innerHTML = `
+                            <div class="encripted-message">
+                                <p class="texto-encriptado">${desencriptadoU}</p>
+                            </div>`
+            texto.focus();
+            texto.value = '';
+        }
     }
-
+    
     
     
 }
