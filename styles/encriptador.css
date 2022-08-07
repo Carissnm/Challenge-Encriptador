@@ -85,6 +85,8 @@ textarea:focus {
 }
 
 button {
+    border-radius: 7px;
+    border: none;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
 }
@@ -93,7 +95,6 @@ button {
 .btn-desencriptar {
     padding: 13px 15px;
     width: 40%;
-    border-radius: 7px;
     margin: 4px;
     border: none;
     color: white;

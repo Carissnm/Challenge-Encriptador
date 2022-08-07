@@ -99,7 +99,7 @@ function descifrarEncriptado() {
         <p>Ingresa sólo texto en minúsculas y sin acentos por favor.</p>`
         limpiarMensajeError()
     } else {
-            let encriptado = texto.value;
+        let encriptado = texto.value;
         if(encriptado == '') {
             display.innerHTML = `<div class="nomessage">
             <img class="img-nomessage" src="./multimedia/cyber-security-g0ff8d1ba3_1280.png" alt="candado cerrado mensaje no encontrado">
@@ -108,14 +108,10 @@ function descifrarEncriptado() {
             </div>`
             limpiarMensajeError();
         } else {
-            let desencriptadoA = encriptado.replace(/ai/g, 'a');
-            let desencriptadoE = desencriptadoA.replace(/enter/g, 'e');
-            let desencriptadoI = desencriptadoE.replace(/imes/g, 'i');
-            let desencriptadoO = desencriptadoI.replace(/ober/g, 'o');
-            let desencriptadoU = desencriptadoO.replace(/ufat/g, 'u');
+            texto.value = encriptado.replace(/ai/g, 'a').replace(/enter/g, 'e').replace(/imes/g, 'i').replace(/ober/g, 'o').replace(/ufat/g, 'u');
             display.innerHTML = `
                             <div class="encripted-message">
-                                <p class="texto-encriptado">${desencriptadoU}</p>
+                                <p class="texto-encriptado">${texto.value}</p>
                             </div>`
             texto.focus();
             texto.value = '';
