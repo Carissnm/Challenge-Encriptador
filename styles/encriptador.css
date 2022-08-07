@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&family=Mouse+Memoirs&family=Poppins:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    width: 100%;
+    background-image: url(../multimedia/hacker-g9505b05f2_1920.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+}
+
+/* div que contiene al icono de alura */
+.contenedor-icono {
+    padding: 40px;
+}
+
+/* encriptador */
+.encriptador {
+    padding: 70px;
+    margin-left: 30px;
+}
+
+textarea {
+    background: transparent;
+    color: #32D98B;
+    border: none;
+    padding: 10px;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    resize: none;
+    margin: 15px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+/* Botonera y texto de aviso */
+.validacion {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.texto-validacion {
+    margin-left: 0.2%;
+}
+
+.botonera {
+}
+
+.botonera p {
+    padding-bottom: 5px;
+}
+
+.botones {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-encriptar,
+.btn-desencriptar {
+    padding: 13px 15px;
+    width: 40%;
+    border-radius: 7px;
+    margin: 4px;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+
+.btn-encriptar {
+    transition: 0.5s;
+    background-color:  #239660;
+}
+
+.btn-encriptar:hover {
+    background-color: #32D98B;
+}
+
+.btn-desencriptar {
+    background-color: rgb(207, 55, 55);
+}
+
+.btn-desencriptar:hover {
+    transition: 0.5s;
+    background-color: rgb(247, 96, 96);
+}
+
+/* sección donde se muestra el mensaje encriptado */
+.display {
+    background-color: #f2f2f2b6;
+    width: 30%;
+    margin: 20px 30px 20px 0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.nomessage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nomessage h2 {
+    padding: 10px;
+}
+
+.nomessage p {
+    padding: 5px;
+}
+
+.img-nomessage {
+    width: 50%;
+    height: auto;
+}
+
+/* ids para js */
+#escondido {
+    display: none;
+}
+
+
+/* div que muestro cuando encripté mensaje */
+.encripted-message {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.texto-encriptado {
+    padding: 30px;
+    font-weight: 500;
+    text-align: left;
+    width: 100%;
+}
+
+.copiar-texto {
+    width: 60%;
+    padding: 13px 15px;
+    margin: 20px;
+    background-color: none;
+    font-weight: 500;
+}
+
+footer {
+    background-color: #333333;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    padding: 15px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 1000px) {
+    main {
+        height: 150vh;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contenedor-icono {
+        width: 100%;
+    }
+
+    .encriptador {
+        padding: 10px;
+        margin-top: 0;
+        margin-left: 10px;
+    }
+
+    .display {
+        width: 80%;
+        height: 80%;
+        padding: 20px;
+        margin: 20px;
+        margin-left: 25px;
+    }
+
+    textarea {
+        width: 90%;
+    }
+
+    .botonera {
+        width: 100%;
+    }
+    
+    .texto-encriptado {
+        text-align: left;
+        width: 100%;
+    }
+
+    .img-nomessage {
+        width: 20%;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    main {
+        height: 160vh;
+    }
+    .validacion {
+        font-size: 13px;
+    }
+
+    .botones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-encriptar,
+    .btn-desencriptar {
+        width: 85%;
+    }
+
+    .img-nomessage {
+        width: 30%;
+    }
+}
