@@ -72,6 +72,10 @@ textarea:focus {
     justify-content: space-evenly;
 }
 
+button {
+    cursor: pointer;
+}
+
 .btn-encriptar,
 .btn-desencriptar {
     padding: 13px 15px;
