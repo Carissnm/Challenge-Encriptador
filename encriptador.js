@@ -2,8 +2,8 @@ const texto = document.querySelector('#mensaje');
 const btnEncriptar = document.querySelector('.btn-encriptar');
 const display = document.querySelector('.display');
 const btnDesencriptar = document.querySelector('.btn-desencriptar');
-
-
+const btnCopiar = document.querySelector('.copiar-texto');
+const btnBorrar = document.querySelector('.borrar-texto')
 
 texto.focus();
 
@@ -14,8 +14,9 @@ function encriptarMensaje() {
         display.innerHTML = `<div class="nomessage">
         <img class="img-nomessage" src="./multimedia/cyber-security-g0ff8d1ba3_1280.png" alt="candado cerrado mensaje no encontrado">
         <h2 class="error">No se encontró ningún mensaje</h2>
-        <p>Ingresá el texto que deseás encriptar o desencriptar.</p>
+        <p>Ingresá el texto que deseás encriptar.</p>
     </div>`
+        limpiarMensajeError()
     } else {
         const textoIngresado = texto.value.split('').map(item => {
             switch(item) {
@@ -43,25 +44,35 @@ function encriptarMensaje() {
         display.innerHTML = `
                     <div class="encripted-message">
                         <p class="texto-encriptado">${textoEncriptado}</p>
-                        <button class="copiar-texto">Copiar</button>
                     </div>`
         const parrafo = document.querySelector('.texto-encriptado');
-        const btnCopiar = document.querySelector('.copiar-texto');
-        btnCopiar.onclick = copiarMensaje ;
             texto.focus();
             texto.value = '';
-            mensajeObj.isEncriptado = true;  
     }    
 }
 
+function limpiarMensajeError() {
+    setTimeout( limpiarDisplay , 3000 )
+}
+
 function copiarMensaje() {
-    const mensajeCopiado = display.firstElementChild.firstElementChild.textContent;
-    texto.value = mensajeCopiado;
-    display.firstElementChild.firstElementChild.remove()
+    if(display.firstElementChild === null) {
+        display.innerHTML = `<div class="nomessage">
+        <img class="img-nomessage" src="./multimedia/cyber-security-g0ff8d1ba3_1280.png" alt="candado cerrado mensaje no encontrado">
+        <h2 class="error">No se encontró ningún mensaje para copiar</h2>
+        </div>`
+        limpiarMensajeError()
+    } else {
+        const mensajeCopiado = display.firstElementChild.firstElementChild.textContent;
+        texto.value = mensajeCopiado;
+        display.firstElementChild.firstElementChild.remove()
+    }
+    
+    
 }
 
 function limpiarDisplay() {
-    display.firstElementChild.remove(parrafo)
+    display.innerHTML = '';
 }
 
 function descifrarEncriptado() {
@@ -70,8 +81,9 @@ function descifrarEncriptado() {
         display.innerHTML = `<div class="nomessage">
         <img class="img-nomessage" src="./multimedia/cyber-security-g0ff8d1ba3_1280.png" alt="candado cerrado mensaje no encontrado">
         <h2 class="error">No se encontró ningún mensaje</h2>
-        <p>Ingresá el texto que deseás encriptar o desencriptar.</p>
+        <p>Ingresá el texto que deseás desencriptar.</p>
         </div>`
+        limpiarMensajeError();
     } else {
         let desencriptadoA = encriptado.replace(/ai/g, 'a');
         let desencriptadoE = desencriptadoA.replace(/enter/g, 'e');
@@ -81,10 +93,7 @@ function descifrarEncriptado() {
         display.innerHTML = `
                         <div class="encripted-message">
                             <p class="texto-encriptado">${desencriptadoU}</p>
-                            <button class="copiar-texto">Copiar</button>
                         </div>`
-        const btnCopiar = document.querySelector('.copiar-texto');
-        btnCopiar.onclick = copiarMensaje ;
         texto.focus();
         texto.value = '';
     }
@@ -101,3 +110,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 btnEncriptar.onclick = encriptarMensaje ;
 btnDesencriptar.onclick = descifrarEncriptado ;
+btnCopiar.onclick = copiarMensaje ;
+btnBorrar.onclick = limpiarDisplay ;
