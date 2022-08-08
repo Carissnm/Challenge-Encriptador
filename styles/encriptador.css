@@ -42,6 +42,10 @@ textarea {
     width: 100%;
 }
 
+textarea::placeholder {
+    color: #32D98B;
+}
+
 .borde-rojo {
     border: 2px solid rgba(236, 27, 27, 0.671);
     box-shadow: 2px 3px 20px rgb(236, 27, 27) ;
